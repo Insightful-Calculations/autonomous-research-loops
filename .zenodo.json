@@ -1,0 +1,28 @@
+{
+  "title": "Autonomous AI Research Loops: A Self-Sustaining Architecture for Continuous Scientific Discovery",
+  "description": "A self-sustaining architecture for continuous scientific discovery using autonomous AI research loops. Built on the Keter orchestration pattern: dispatch, monitor, route. Delegates to specialized sefirot nodes for discovery, audit, synthesis, and persistence without centralized coordination bottlenecks.",
+  "creators": [
+    {
+      "name": "Reynisson, Hróar Þór",
+      "affiliation": "Technological Institute of Iceland (IceTec)",
+      "orcid": "0009-0003-6518-121X"
+    }
+  ],
+  "upload_type": "publication",
+  "access_right": "open",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "autonomous research",
+    "AI agents",
+    "scientific discovery",
+    "self-sustaining systems",
+    "Keter architecture",
+    "QHOTS",
+    "orchestration",
+    "open science"
+  ],
+  "related_identifiers": [],
+  "language": "eng",
+  "version": "1",
+  "publication_type": "article"
+}
