@@ -59,7 +59,8 @@ during operation. Component analysis reveals that 66\% of the architecture is
 domain-independent, suggesting feasibility of instantiation for other research domains.
 Key innovations include: (1)~reflection checkpoints with automated concept correlation
 for strategic self-assessment, (2)~honest negative requirements enforcing scientific
-rigor, (3)~succession protocols enabling indefinite cross-session operation, and
+rigor, (3)~succession protocols enabling theoretically indefinite cross-session
+operation (demonstrated across 7 sessions), and
 (4)~a quality tier system mapping evidence strength across domains. We compare \keter{}
 against existing autonomous research systems (AI~Scientist, BabyAGI, AutoGPT) and
 identify sustained multi-cycle autonomy with quality control as the primary
@@ -107,8 +108,9 @@ knowledge, strategic self-correction, and zero human intervention during operati
           distribution (23\% \bedrock{}, 55\% \pillar{}), and self-correction
           mechanisms (Section~\ref{sec:results}).
     \item Component analysis showing 66\% of the architecture is domain-independent,
-          with detailed mapping of shared versus domain-specific components across
-          physics and computer science (Section~\ref{sec:analysis}).
+          with a feasibility-projection mapping of shared versus domain-specific
+          components across physics and computer science, not an instantiated
+          cross-domain demonstration (Section~\ref{sec:analysis}).
     \item Honest assessment of five categories of limitations, including self-referential
           circularity, context window constraints, and domain coverage boundaries
           (Section~\ref{sec:limitations}).
@@ -166,7 +168,7 @@ Multi-cycle autonomy & 100+ & 1 & $\infty^*$ & $\infty^*$ & 1 \\
 Quality tier system  & 4-tier & -- & -- & -- & -- \\
 Honest negatives     & $\geq$3/unit & -- & -- & -- & -- \\
 Reflection checkpoints & Every 5 cyc. & -- & -- & -- & -- \\
-Knowledge accumulation & 279+ claims & -- & Task list & Memory & -- \\
+Knowledge accumulation & 279 claims & -- & Task list & Memory & -- \\
 Self-correction      & AMBER flags & Self-review & -- & -- & -- \\
 Concept correlation  & Automated & -- & -- & -- & -- \\
 Succession protocol  & Cross-session & -- & -- & -- & -- \\
@@ -272,8 +274,10 @@ negatives are rejected at the quality gate.
 
 This requirement prevents the well-documented tendency of LLMs to overclaim results
 and suppress negative findings~\cite{overclaiming}. In 100+ operational cycles,
-the system documented 500+ honest negatives, including the demotion of its own
-axioms (discovering circular reasoning in foundational claims).
+the system documented at least 3 honest negatives per checkpoint (189 checkpoints
+recorded); the precise aggregate total across all checkpoints has not yet been
+summed, and this figure includes the demotion of its own axioms (discovering
+circular reasoning in foundational claims).
 
 \subsection{Reflection Checkpoints}
 \label{sec:reflection}
@@ -324,12 +328,15 @@ content plugs into the universal template.
 
 \begin{table}[t]
 \centering
-\caption{Domain-specific insertion points in the \keter{} template.}
+\caption{Domain-specific insertion points in the \keter{} template. The Physics
+Instance column is empirically audited; the CS Instance column is illustrative/
+aspirational (no CS instantiation has been performed; see
+Section~\ref{sec:limitations}).}
 \label{tab:insertion}
 \small
 \begin{tabular}{@{}lll@{}}
 \toprule
-Insertion Point & Physics Instance & CS Instance \\
+Insertion Point & Physics Instance & CS Instance (illustrative) \\
 \midrule
 Constants module     & CODATA physical constants & Benchmark parameters \\
 Validation tests     & 1716 physics tests        & Benchmark suite \\
@@ -363,7 +370,8 @@ the system investigated geometric derivations of fundamental physical constants.
           54 \sand{}, 8 \mud{})
     \item \textbf{Arcs:} 10 research arcs closed, 7 graded at GPA $\geq$ 3.0
     \item \textbf{Tests:} 1716 validation tests, 294 in campaign framework
-    \item \textbf{Honest negatives:} 500+ documented across all phases
+    \item \textbf{Honest negatives:} $\geq$3 per checkpoint across 189 checkpoints
+          (full aggregate not yet summed; see Section~\ref{sec:limitations})
     \item \textbf{Self-corrections:} Multiple axiom demotions (phi circularity,
           28 continued fraction origin)
     \item \textbf{Output:} 1276-line submission-ready manuscript (62 revisions)
@@ -373,16 +381,19 @@ the system investigated geometric derivations of fundamental physical constants.
 
 \subsection{Quality Distribution}
 
-The tier distribution of accumulated claims follows a pyramid structure
-(Figure~\ref{fig:tiers}): 23\% \bedrock{} (64), 55\% \pillar{} (153),
+The tier distribution of accumulated claims follows a pyramid structure:
+23\% \bedrock{} (64), 55\% \pillar{} (153),
 19\% \sand{} (54), 3\% \mud{} (8). This distribution is \emph{not} by design---the
 system does not target tier ratios. Rather, it reflects the natural difficulty of
 achieving high-confidence results: most findings are \pillar{}-tier (strong but not
 definitive), with a smaller proportion reaching \bedrock{} status.
 
-The 3\% \mud{} rate indicates the system rarely generates speculative claims without
-evidence, suggesting the honest negative requirements and quality gates are effective
-filters.
+The 3\% \mud{} rate indicates the system rarely retains speculative claims without
+evidence, consistent with (but not proof of) the honest negative requirements and
+quality gates acting as effective filters; an alternative explanation---that
+speculative claims are demoted or pruned post-hoc rather than prevented at
+generation time---cannot be ruled out without pre-gate claim counts, which are
+not currently tracked.
 
 % Placeholder for figure
 % \begin{figure}[t]
@@ -433,9 +444,11 @@ The universal components form a self-consistent framework. A reader unfamiliar
 with the source domain could instantiate the template for a new domain by filling
 10 insertion points (Table~\ref{tab:insertion}).
 
-\subsection{Cross-Domain Mapping}
+\subsection{Cross-Domain Mapping (Feasibility Projection)}
 
-We analyzed the feasibility of mapping 8 shared components from physics to CS
+This subsection is a desk-analysis \emph{projection}, not an empirical result: no CS
+instantiation has been performed (see Section~\ref{sec:limitations}, item~3). We analyzed
+the feasibility of mapping 8 shared components from physics to CS
 (Table~\ref{tab:mapping}). Three components map cleanly (honest negatives, concept
 correlation, reflection checkpoints). Two have minor mismatches (publication pipeline
 needs page-limit awareness; arc organization needs deadline awareness). Three have
@@ -443,7 +456,8 @@ significant mismatches requiring adaptation:
 
 \begin{table}[t]
 \centering
-\caption{Cross-domain component mapping quality.}
+\caption{Cross-domain component mapping quality (feasibility projection; no CS
+instantiation performed).}
 \label{tab:mapping}
 \small
 \begin{tabular}{@{}lll@{}}
@@ -452,7 +466,7 @@ Component & Mapping Quality & Key Mismatch \\
 \midrule
 Honest negatives       & Clean       & None \\
 Concept correlation    & Clean       & None \\
-Reflection checkpoints & Clean       & Deadline awareness needed \\
+Reflection checkpoints & Clean       & None \\
 Publication pipeline   & Minor       & Page limits require budget pass \\
 Arc organization       & Minor       & Conference deadlines force early closure \\
 Quality tiers          & Significant & No single authoritative reference (no ``CODATA'') \\
@@ -470,13 +484,16 @@ Over 100+ cycles, we observe:
     \item \textbf{Knowledge growth:} Approximately linear (2--3 claims/cycle),
           with no sign of saturation.
     \item \textbf{Quality maintenance:} \bedrock{} proportion remained stable
-          at 20--25\% throughout, not declining with volume.
+          at 20--25\% throughout (23\% at the final snapshot reported in
+          Section~\ref{sec:instantiation}), not declining with volume.
     \item \textbf{Self-correction rate:} Reflection checkpoints caught 3 major
           errors (circularity, selection bias, editorial drift) that would have
           compounded without intervention.
-    \item \textbf{Infrastructure resilience:} The system survived 5 infrastructure
-          failures (segfaults, orphaned commits, context overflows) and recovered
-          autonomously in all cases via checkpoint-based restart.
+    \item \textbf{Infrastructure resilience:} The system survived 5 documented
+          infrastructure failures (segfaults, orphaned commits, context overflows)
+          and recovered autonomously in all cases via checkpoint-based restart;
+          precise timing of each incident has not yet been reconstructed from
+          git history.
 \end{itemize}
 
 % ============================================================
@@ -567,6 +584,22 @@ the same cycle does not produce identical outputs. Reproducibility is at the
 \emph{methodology} level (same architecture, same constraints, same quality
 thresholds) rather than the \emph{output} level (same generated text).
 
+\paragraph{Data and artifact availability.}
+The operational metrics reported throughout this paper (Sections~\ref{sec:instantiation}
+and~\ref{sec:results}) are historical snapshots of the \qhots{} physics research
+repository, \texttt{github.com/Insightful-Calculations/qhots\_v7\_calc}. Representative
+artifacts: the tier counts (64/153/54/8) and 279-claim total correspond to the knowledge
+base as of commit \texttt{388dab9f5}; the 45/23 universal/domain-specific component split
+is recorded in \texttt{outputs/research/cs\_meta\_paper/phase1\_universal\_audit.md} and
+\texttt{COMPONENT\_LIBRARY.md}; the 963-simulation and 1716-test counts and Phase~426
+marker are recorded in the repository's \texttt{STATUS.md} history (commits
+\textasciitilde 2026-02-19/21); the $m_p/m_e$ crown-jewel figure traces to Phase~31 in
+\texttt{docs/PHASE\_INDEX.md}. The honest-negatives aggregation gap and the infrastructure
+failure count noted below are themselves disclosed in
+\texttt{outputs/research/cs\_meta\_paper/evidence\_catalog.md} (``Honest Gaps'' table).
+This paper's own source repository is
+\texttt{github.com/Insightful-Calculations/autonomous-research-loops}.
+
 % ============================================================
 \section{Discussion}
 \label{sec:discussion}
@@ -588,10 +621,10 @@ confidence that more closely mirrors human scientific judgment.
 
 \paragraph{Honest negatives as architectural constraint.}
 Making honest negatives mandatory (rather than optional) transforms them from
-a reporting afterthought into a structural feature. The 500+ honest negatives
-accumulated across 100+ cycles represent a valuable dataset about the boundaries
-of the research approach---arguably more informative than the positive results
-alone.
+a reporting afterthought into a structural feature. The honest negatives
+accumulated at $\geq$3 per checkpoint across 100+ cycles represent a valuable
+dataset about the boundaries of the research approach---arguably more informative
+than the positive results alone.
 
 \paragraph{Toward indefinite operation.}
 The succession protocol---where the system writes a ``startup plan'' for future
